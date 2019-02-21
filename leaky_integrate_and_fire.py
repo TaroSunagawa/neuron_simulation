@@ -43,44 +43,21 @@ if __name__ == '__main__':
     
     while(t<500):
         R_mI_e = R_mI_e
-        
+
         pre_v = calc_v(P_s_pre, pre_v)
         pre_v_plot = np.append(pre_v_plot, pre_v)
         
-        #post_v = calc_v(P_s_post, post_v)
-        #post_v_plot = np.append(post_v_plot, post_v)
-        
         if pre_v > v_th:
-            #P_s_post = 1.0
-            #pspost_plot = np.append(pspost_plot, P_s_post)
             pre_v = v_reset
             ft_pre = t
-        #else:
-            #P_s_post = P_syn(ft_pre, t)
-            #pspost_plot = np.append(pspost_plot, P_s_post)
-        """
-        if post_v > v_th:
-            P_s_pre = 1.0
-            pspre_plot = np.append(pspre_plot, P_s_pre)
-            post_v = v_reset
-            ft_post = t
-        else:
-            P_s_pre = P_syn(ft_post, t)
-            pspre_plot = np.append(pspre_plot, P_s_pre)
-        """
+            
         t_plot = np.append(t_plot, t)
         t += dt
   
     fig = plt.figure(figsize=(10,5),dpi=200)
     plt.xlabel('t (ms)')
     plt.ylabel('V (mV)')
-    #plt.ylim([0,20])
-    #plt.xlim([-10,100])
-    #ax0.set_ylim([0,6])
-    #plt.plot(t_plot, pspre_plot, label='pre')
-    #plt.plot(t_plot, pspost_plot, label='post')
     plt.plot(t_plot, pre_v_plot)#, color='blue')
-    #plt.plot(t_plot, post_v_plot, label='post')#, color='orage')
     plt.legend()
     #plt.savefig('fig.png')
     plt.show()
